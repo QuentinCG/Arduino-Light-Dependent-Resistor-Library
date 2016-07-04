@@ -55,7 +55,7 @@ In order to use an other photocell, you'll have to provide the library a curve o
 
 Most of the time, the curves are logarithmic curves which mean you'll have to transform and solve equations.
 A full explanation on how to do it step by step is shown in the <a href="https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/blob/master/LightDependentResistor/LightDependentResistor.h">header file</a>.
-You'll also find how GL55xx equations were solved in the <a href="https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/blob/master/LightDependentResistor/doc/GL55_calculation.xls">Excel sheet</a>.
+You'll also find how GL55xx equations were solved in the <a href="https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/blob/master/doc/GL55_calculation.xls">Excel sheet</a>.
 
 
 ## License
