@@ -117,7 +117,7 @@ class LightDependentResistor
     /*!
      * \brief setPhotocellPositionOnGround Configure the photocell as connected to +5V or GND
      *
-     * \param on_ground (bool) True if the photocell is connected to +5V, else false
+     * \param on_ground (bool) True if the photocell is connected to GND, else false
      *
      *  True:                    ^
      *            _____      ___/___
