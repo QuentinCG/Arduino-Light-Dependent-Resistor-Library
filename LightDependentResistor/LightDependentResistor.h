@@ -11,8 +11,8 @@
  *                           ^
  *            _____      ___/___
  *    5V |---|_____|----|__/____|--| GND
- *            Other       /
- *           Resistor   Photocell
+ *    or      Other       /
+ *   3.3V    Resistor   Photocell
  *
  * Note: By default, the photocell must be on the ground.
  *       It is possible to exchange the position of the photocell and the other resistor
@@ -115,21 +115,21 @@ class LightDependentResistor
     static float footCandlesToLux(float intensity_in_footcandles);
 
     /*!
-     * \brief setPhotocellPositionOnGround Configure the photocell as connected to +5V or GND
+     * \brief setPhotocellPositionOnGround Configure the photocell as connected to +5V/3.3V or GND
      *
      * \param on_ground (bool) True if the photocell is connected to GND, else false
      *
      *  True:                    ^
      *            _____      ___/___
      *    5V |---|_____|----|__/____|--| GND
-     *            Other       /
-     *           Resistor   Photocell
+     *    or      Other       /
+     *   3.3V    Resistor   Photocell
      *
      *  False:                    ^
      *             _____      ___/___
      *    GND |---|_____|----|__/____|--| 5V
-     *            Other        /
-     *           Resistor   Photocell
+     *            Other        /          or
+     *           Resistor   Photocell    3.3V
      */
     void setPhotocellPositionOnGround(bool on_ground);
 

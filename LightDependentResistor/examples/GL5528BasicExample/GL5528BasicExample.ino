@@ -5,8 +5,8 @@
  *                           ^
  *            _____      ___/___
  *    5V |---|_____|----|__/____|--| GND
- *            3.3K        /
- *                       GL5528
+ *    or      3.3K        /
+ *   3.3V                 GL5528
  *
  * \author Quentin Comte-Gaz <quentin@comte-gaz.com>
  * \date 4 July 2016
@@ -28,7 +28,7 @@ void setup(void)
 {
   Serial.begin(9600);
 
-  // Uncomment if your photocell is connected to 5V instead of the other resistor
+  // Uncomment if your photocell is connected to 5V/3.3V instead of the other resistor
   //photocell.setPhotocellPositionOnGround(false);
 
   Serial.print("Light intensity will be given every second...\n");

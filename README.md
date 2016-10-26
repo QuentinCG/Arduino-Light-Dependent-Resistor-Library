@@ -20,6 +20,7 @@ It handles the GL55xx photocell series but any other photocell can be configured
 ## How to connect a photocell to your Arduino
 
 You'll need a resistor in addition of the sensor in order to create a "voltage bridge".
+The needed voltage can be either 5V or 3.3V.
 
 Here is an example for the GL5528 photocell:
 
