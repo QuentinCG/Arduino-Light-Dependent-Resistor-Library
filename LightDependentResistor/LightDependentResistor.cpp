@@ -60,12 +60,12 @@ void LightDependentResistor::updatePhotocellParameters(float mult_value, float p
 
 float LightDependentResistor::luxToFootCandles(float intensity_in_lux)
 {
-  return 10.764*intensity_in_lux;
+  return intensity_in_footcandles/10.764;
 }
 
 float LightDependentResistor::footCandlesToLux(float intensity_in_footcandles)
 {
-  return intensity_in_footcandles/10.764;
+  return 10.764*intensity_in_lux;
 }
 
 void LightDependentResistor::setPhotocellPositionOnGround(bool on_ground)
