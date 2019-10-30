@@ -30,7 +30,7 @@ Here is an example for the GL5528 photocell:
 One example is provided with this library:
 
 ### Show light intensity every second with GL5528 photocell (in lux and footcandles)
-<a target="_blank" href="https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/blob/master/LightDependentResistor/examples/GL5528BasicExample/GL5528BasicExample.ino">Link to source code</a>
+<a target="_blank" href="https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/blob/master/examples/GL5528BasicExample/GL5528BasicExample.ino">Link to source code</a>
 
 ## How to use this library
 
@@ -52,7 +52,7 @@ If your photocell is in the GL55x series, you just have to initialize the photoc
 In order to use an other photocell, you'll have to provide the library a curve of this kind: I[lux]=constant_1/(R[Ω]^constant_2).
 
 Most of the time, the curves are logarithmic curves which mean you'll have to transform and solve equations.
-A full explanation on how to do it step by step is shown in the <a href="https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/blob/master/LightDependentResistor/LightDependentResistor.h">header file</a>.
+A full explanation on how to do it step by step is shown in the <a href="https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/blob/master/LightDependentResistor.h">header file</a>.
 You'll also find how GL55xx equations were solved in the <a href="https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/blob/master/doc/GL55_calculation.xls">Excel sheet</a>.
 
 ## License
