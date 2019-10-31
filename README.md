@@ -1,5 +1,5 @@
 # Photocell (Light Dependent Resistor) Library for Arduino
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/177885b432f443e587a0103162919efc)](https://www.codacy.com/manual/QuentinCG/Arduino-Light-Dependent-Resistor-Library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=QuentinCG/Arduino-Light-Dependent-Resistor-Library&amp;utm_campaign=Badge_Grade) [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/blob/master/LICENSE.md)
+[![Build Status](https://travis-ci.org/QuentinCG/Arduino-Light-Dependent-Resistor-Library.svg?branch=master)](https://travis-ci.org/QuentinCG/Arduino-Light-Dependent-Resistor-Library) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/177885b432f443e587a0103162919efc)](https://www.codacy.com/manual/QuentinCG/Arduino-Light-Dependent-Resistor-Library?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=QuentinCG/Arduino-Light-Dependent-Resistor-Library&amp;utm_campaign=Badge_Grade) [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/blob/master/LICENSE.md)
 
 ## What is it
 

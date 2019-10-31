@@ -3,10 +3,12 @@ sudo: false
 
 env:
   global:
-  - PRETTYNAME="Hygrometer Sensor (Rain Drop and Soil Moisture)"
+  - PRETTYNAME="Light Dependent Resistor (GL55xx, ...)"
 
 before_install:
 - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
 
 script:
-- build_main_platforms
+- build_samd_platforms
+- build_m4_platforms
+- build_arcada_platforms
