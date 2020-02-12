@@ -82,7 +82,7 @@ class LightDependentResistor
      * \parameter pow_value (float) Power parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
      * \parameter adc_resolution_bits (unsigned int) Number of resolution bits for the ADC pin (more information here: https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)
      */
-    LightDependentResistor(int pin, unsigned long other_resistor, float mult_value, float pow_value, unsigned int adc_resolution_bits = 10)
+    LightDependentResistor(int pin, unsigned long other_resistor, float mult_value, float pow_value, unsigned int adc_resolution_bits = 10);
 
     /*!
      * \brief getCurrentLux Get light intensity (in lux) from the photocell
