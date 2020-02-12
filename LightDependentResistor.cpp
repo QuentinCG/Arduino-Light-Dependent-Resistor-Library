@@ -2,10 +2,10 @@
  * \brief et light intensity from Light dependent Resistor (implementation)
  *
  * \author Quentin Comte-Gaz <quentin@comte-gaz.com>
- * \date 4 July 2016
+ * \date 12 February 2020
  * \license MIT License (contact me if too restrictive)
- * \copyright Copyright (c) 2016 Quentin Comte-Gaz
- * \version 1.0
+ * \copyright Copyright (c) 2020 Quentin Comte-Gaz
+ * \version 1.1
  */
 
 #include "LightDependentResistor.h"
