@@ -56,8 +56,9 @@ class LightDependentResistor
      * \param pin (int) Analog pin connected to the voltage divider
      * \param other_resistor (unsigned long) Resistor used for the voltage divider
      * \parameter kind (ePhotoCellKind) Used photocell
+     * \parameter adc_resolution_bits (unsigned int, optional) Number of resolution bits for the ADC pin (more information here: https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)
      */
-    LightDependentResistor(int pin, unsigned long other_resistor, ePhotoCellKind kind = GL5528);
+    LightDependentResistor(int pin, unsigned long other_resistor, ePhotoCellKind kind = GL5528, unsigned int adc_resolution_bits = 10);
 
     /*!
      * \brief LightDependentResistor Initialize the light intensity getter class
@@ -79,8 +80,9 @@ class LightDependentResistor
      * \param other_resistor (unsigned long) Resistor used for the voltage divider
      * \parameter mult_value (float) Multiplication parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
      * \parameter pow_value (float) Power parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
+     * \parameter adc_resolution_bits (unsigned int) Number of resolution bits for the ADC pin (more information here: https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)
      */
-    LightDependentResistor(int pin, unsigned long other_resistor, float mult_value, float pow_value);
+    LightDependentResistor(int pin, unsigned long other_resistor, float mult_value, float pow_value, unsigned int adc_resolution_bits = 10)
 
     /*!
      * \brief getCurrentLux Get light intensity (in lux) from the photocell
