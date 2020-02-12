@@ -149,6 +149,7 @@ class LightDependentResistor
     float _mult_value;
     float _pow_value;
     bool _photocell_on_ground;
+    unsigned int _adc_resolution_bits;
 };
 
 #endif //LightDependentResistor_h

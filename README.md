@@ -62,3 +62,6 @@ This project is under MIT license. This means you can use it as you want (just d
 ## Contribute
 
 If you want to add more examples or improve the library, just create a pull request with proper commit message and right wrapping.
+
+
+Thank you [leonheuler](https://github.com/leonheuler/) for his [fork](https://github.com/leonheuler/Arduino-Light-Dependent-Resistor-Library) helping me improve the ADC bits resolution handling in the library.
