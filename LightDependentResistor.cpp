@@ -79,7 +79,7 @@ float LightDependentResistor::getCurrentLux() const
 
   unsigned long photocell_resistor;
 
-  float ratio = ((float)1024/(float)photocell_value) - 1;
+  float ratio = ((float)analogReadResolution()/(float)photocell_value) - 1;
   if (_photocell_on_ground) {
     photocell_resistor = _other_resistor / ratio;
   } else {
