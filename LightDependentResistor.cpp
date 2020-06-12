@@ -11,9 +11,11 @@
 #include "LightDependentResistor.h"
 
 LightDependentResistor::LightDependentResistor(int pin, unsigned long other_resistor, ePhotoCellKind kind, unsigned int adc_resolution_bits) :
-  _photocell_on_ground (true),
   _pin (pin),
   _other_resistor (other_resistor),
+  _mult_value(32017200),
+  _pow_value(1.5832),
+  _photocell_on_ground (true),
   _adc_resolution_bits(adc_resolution_bits)
 {
   switch (kind) {
@@ -45,11 +47,11 @@ LightDependentResistor::LightDependentResistor(int pin, unsigned long other_resi
 }
 
 LightDependentResistor::LightDependentResistor(int pin, unsigned long other_resistor, float mult_value, float pow_value, unsigned int adc_resolution_bits) :
-  _photocell_on_ground (true),
   _pin (pin),
   _other_resistor (other_resistor),
   _mult_value (mult_value),
   _pow_value (pow_value),
+  _photocell_on_ground (true),
   _adc_resolution_bits(adc_resolution_bits)
 {
 }
