@@ -19,10 +19,10 @@
  *       but you will have to call \p setPhotocellPositionOnGround(false).
  *
  * \author Quentin Comte-Gaz <quentin@comte-gaz.com>
- * \date 12 February 2020
+ * \date 14 June 2020
  * \license MIT License (contact me if too restrictive)
  * \copyright Copyright (c) 2020 Quentin Comte-Gaz
- * \version 1.1
+ * \version 1.2
  */
 
 #ifndef LightDependentResistor_h
