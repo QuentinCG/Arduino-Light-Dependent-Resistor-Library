@@ -10,7 +10,7 @@ It handles the GL55xx photocell series but any other photocell can be configured
 
 ## How to install
 
-1) Download <a target="_blank" href="https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/releases/download/1.1.0/LightDependentResistor_v1_1_0.zip">latest release</a>
+1) Download <a target="_blank" href="https://github.com/QuentinCG/Arduino-Light-Dependent-Resistor-Library/releases">latest release</a>
 
 2) On your Arduino IDE, click "Sketch" menu and then "Include Library > Add .ZIP Libraries"
 
