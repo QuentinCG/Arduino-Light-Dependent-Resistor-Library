@@ -80,7 +80,7 @@ void LightDependentResistor::setPhotocellPositionOnGround(bool on_ground)
 float LightDependentResistor::getCurrentLux() const
 {
   // Analog resolution setter is not handled on all boards (not compatible boards: MEGA, ESP8266, Atmega32 [ex: leonardo])
-  #if !defined(__AVR_ATmega1280__) && !defined(__AVR_ATmega2560__) && !defined(ESP8266) && !defined(__AVR_Atmega32U4__)
+  #if !defined(__AVR_ATmega1280__) && !defined(__AVR_ATmega2560__) && !defined(ESP8266) && !defined(__AVR_Atmega32U4__) && !defined(__AVR_ATmega16U4__) 
     analogReadResolution(_adc_resolution_bits);
   #endif
   int photocell_value = analogRead(_pin);
