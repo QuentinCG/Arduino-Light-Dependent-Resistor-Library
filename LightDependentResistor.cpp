@@ -79,7 +79,10 @@ void LightDependentResistor::setPhotocellPositionOnGround(bool on_ground)
 
 float LightDependentResistor::getCurrentLux() const
 {
-  analogReadResolution(_adc_resolution_bits);
+  // Analog resolution setter is not handled on all boards
+  #if !defined(__AVR_ATmega1280__) && !defined(__AVR_ATmega2560__)
+    analogReadResolution(_adc_resolution_bits);
+  #endif
   int photocell_value = analogRead(_pin);
 
   unsigned long photocell_resistor;
