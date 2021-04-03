@@ -10,5 +10,6 @@ before_install:
 
 script:
 - build_samd_platforms
-- build_m4_platforms
 - build_arcada_platforms
+# M4 auto-test build not handled correctly by Adafruit script...
+#- build_m4_platforms
