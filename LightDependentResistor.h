@@ -58,7 +58,7 @@ class LightDependentResistor
      * \parameter kind (ePhotoCellKind) Used photocell
      * \parameter adc_resolution_bits (unsigned int, optional) Number of resolution bits for the ADC pin (more information here: https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)
      */
-    LightDependentResistor(int pin, unsigned long other_resistor, ePhotoCellKind kind = GL5528, unsigned int adc_resolution_bits = 10);
+    LightDependentResistor(int pin, unsigned long other_resistor, ePhotoCellKind kind = GL5528, unsigned int adc_resolution_bits = 10, unsigned int smoothing_history_size = 10);
 
     /*!
      * \brief LightDependentResistor Initialize the light intensity getter class
@@ -82,7 +82,7 @@ class LightDependentResistor
      * \parameter pow_value (float) Power parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
      * \parameter adc_resolution_bits (unsigned int) Number of resolution bits for the ADC pin (more information here: https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)
      */
-    LightDependentResistor(int pin, unsigned long other_resistor, float mult_value, float pow_value, unsigned int adc_resolution_bits = 10);
+    LightDependentResistor(int pin, unsigned long other_resistor, float mult_value, float pow_value, unsigned int adc_resolution_bits = 10, unsigned int smoothing_history_size = 10);
 
     /*!
      * \brief getCurrentLux Get light intensity (in lux) from the photocell
@@ -143,6 +143,21 @@ class LightDependentResistor
      */
     void updatePhotocellParameters(float mult_value, float pow_value);
 
+
+    /*!
+     * \brief getSmoothedLux Read light intensity (in lux) from the photocell, apply linear smoothing using the number of historic values specified with the constructor.
+     *
+     * \return (float) Light intensity (in lux) after applying linear smoothing
+     */
+    float getSmoothedLux();
+
+    /*!
+     * \brief getCurrentFootCandles Read light intensity from the photocell, apply linear smoothing using the number of historic values specified with the constructor, convert to footcandles.
+     *
+     * \return (float) Light intensity (in footcandles) after applying linear smoothing
+     */
+    float getSmoothedFootCandles();
+
   private:
     int _pin;
     unsigned long _other_resistor;
@@ -150,6 +165,12 @@ class LightDependentResistor
     float _pow_value;
     bool _photocell_on_ground;
     unsigned int _adc_resolution_bits;
+    float* _smoothing_history_values;
+    float _smoothing_sum;
+    unsigned int _smoothing_history_size;
+    unsigned int _smoothing_history_next;
+
+    void _init_smoothing(unsigned int smoothing_history_size);
 };
 
 #endif //LightDependentResistor_h
