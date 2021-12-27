@@ -1,5 +1,5 @@
 /*
- * \brief et light intensity from Light dependent Resistor (implementation)
+ * \brief Get light intensity value (Lux & FootCandles) from Light dependent Resistor (implementation)
  *
  * \author Quentin Comte-Gaz <quentin@comte-gaz.com>
  * \date 27 December 2021
@@ -120,9 +120,12 @@ float LightDependentResistor::getCurrentLux() const
   unsigned long photocell_resistor;
 
   float ratio = ((float)pow(2, _adc_resolution_bits) / (float)photocell_value) - 1;
-  if (_photocell_on_ground) {
+  if (_photocell_on_ground)
+  {
     photocell_resistor = _other_resistor / ratio;
-  } else {
+  }
+  else
+  {
     photocell_resistor = _other_resistor * ratio;
   }
 

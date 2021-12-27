@@ -1,5 +1,5 @@
 /*
- * \brief Get light intensity from Light dependent Resistor (LDR) a.k.a. photocell or photoresistor
+ * \brief Get light intensity value (Lux & FootCandles) from Light dependent Resistor (LDR) a.k.a. photocell or photoresistor
  *
  * This library is easily usable with most GL55xx photoresistors (at ~25°C).
  *
@@ -147,7 +147,6 @@ class LightDependentResistor
      */
     void updatePhotocellParameters(float mult_value, float pow_value);
 
-
     /*!
      * \brief getSmoothedLux Read light intensity (in lux) from the photocell, apply linear smoothing using the number of historic values specified with the constructor.
      *
@@ -172,7 +171,7 @@ class LightDependentResistor
     float _smoothing_sum; //!< (smoothing only) Current sum of valid values of \v _smoothing_history_values
     unsigned int _smoothing_history_size; //!< (smoothing only) Size of the table of values
     unsigned int _smoothing_history_next; //!< (smoothing only) Next value to get/replace
-    float* _smoothing_history_values; //!< (smoothing only) All valid values (as lux) in a table of \v _smoothing_history_size values maximum (oldest value will be replaced by a new one if table is full)
+    float* _smoothing_history_values; //!< (smoothing only) All valid values (in lux) in a table of \v _smoothing_history_size values maximum (oldest value will be replaced by a new one if table is full)
 };
 
 #endif //LightDependentResistor_h

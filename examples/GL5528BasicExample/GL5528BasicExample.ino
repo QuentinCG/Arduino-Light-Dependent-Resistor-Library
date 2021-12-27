@@ -22,7 +22,11 @@
 #define USED_PHOTOCELL LightDependentResistor::GL5528
 
 // Create a GL5528 photocell instance (on A0 pin)
-LightDependentResistor photocell(USED_PIN, OTHER_RESISTOR, USED_PHOTOCELL/*, 10 <-- Default ADC resolution, 10 <-- Default smooth if used */);
+LightDependentResistor photocell(USED_PIN,
+                                 OTHER_RESISTOR,
+                                 USED_PHOTOCELL,
+                                 10, // Default ADC resolution
+                                 10); //Default linear smooth (if used)
 
 void setup(void)
 {
@@ -39,7 +43,7 @@ void loop()
   // Check light intensity every second
 
   float intensity_in_lux = photocell.getCurrentLux();
-  // prefer "float intensity_in_lux = photocell.getSmoothedLux()" if you want to have a "smoothed" value
+  // prefer "float intensity_in_lux = photocell.getSmoothedLux();" if you want to have a "smoothed" value
 
   Serial.print("Light intensity: ");
   Serial.print(intensity_in_lux);
