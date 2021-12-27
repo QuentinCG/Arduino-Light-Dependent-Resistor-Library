@@ -9,10 +9,10 @@
  *   3.3V                 GL5528
  *
  * \author Quentin Comte-Gaz <quentin@comte-gaz.com>
- * \date 4 July 2016
+ * \date 27 December 2021
  * \license MIT License (contact me if too restrictive)
- * \copyright Copyright (c) 2016 Quentin Comte-Gaz
- * \version 1.0
+ * \copyright Copyright (c) 2021 Quentin Comte-Gaz
+ * \version 1.3
  */
 
 #include <LightDependentResistor.h>
@@ -22,7 +22,7 @@
 #define USED_PHOTOCELL LightDependentResistor::GL5528
 
 // Create a GL5528 photocell instance (on A0 pin)
-LightDependentResistor photocell(USED_PIN, OTHER_RESISTOR, USED_PHOTOCELL);
+LightDependentResistor photocell(USED_PIN, OTHER_RESISTOR, USED_PHOTOCELL/*, 10 <-- Default ADC resolution, 10 <-- Default smooth if used */);
 
 void setup(void)
 {
@@ -39,6 +39,8 @@ void loop()
   // Check light intensity every second
 
   float intensity_in_lux = photocell.getCurrentLux();
+  // prefer "float intensity_in_lux = photocell.getSmoothedLux()" if you want to have a "smoothed" value
+
   Serial.print("Light intensity: ");
   Serial.print(intensity_in_lux);
   Serial.print("lx (");

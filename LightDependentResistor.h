@@ -19,10 +19,10 @@
  *       but you will have to call \p setPhotocellPositionOnGround(false).
  *
  * \author Quentin Comte-Gaz <quentin@comte-gaz.com>
- * \date 14 June 2020
+ * \date 27 December 2021
  * \license MIT License (contact me if too restrictive)
- * \copyright Copyright (c) 2020 Quentin Comte-Gaz
- * \version 1.2
+ * \copyright Copyright (c) 2021 Quentin Comte-Gaz
+ * \version 1.3
  */
 
 #ifndef LightDependentResistor_h
@@ -55,8 +55,9 @@ class LightDependentResistor
      *
      * \param pin (int) Analog pin connected to the voltage divider
      * \param other_resistor (unsigned long) Resistor used for the voltage divider
-     * \parameter kind (ePhotoCellKind) Used photocell
-     * \parameter adc_resolution_bits (unsigned int, optional) Number of resolution bits for the ADC pin (more information here: https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)
+     * \param kind (ePhotoCellKind) Used photocell
+     * \param adc_resolution_bits (unsigned int, optional, default: 10) Number of resolution bits for the ADC pin (more information here: https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)
+     * \param smoothing_history_size (unsigned int, optional, default: 10) Max number of raw values used for \f getSmoothedLux or \f getSmoothedFootCandles
      */
     LightDependentResistor(int pin, unsigned long other_resistor, ePhotoCellKind kind = GL5528, unsigned int adc_resolution_bits = 10, unsigned int smoothing_history_size = 10);
 
@@ -78,11 +79,14 @@ class LightDependentResistor
      *
      * \param pin (int) Analog pin connected to the voltage divider
      * \param other_resistor (unsigned long) Resistor used for the voltage divider
-     * \parameter mult_value (float) Multiplication parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
-     * \parameter pow_value (float) Power parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
-     * \parameter adc_resolution_bits (unsigned int) Number of resolution bits for the ADC pin (more information here: https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)
+     * \param mult_value (float) Multiplication parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
+     * \param pow_value (float) Power parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
+     * \param adc_resolution_bits (unsigned int, optional, default: 10) Number of resolution bits for the ADC pin (more information here: https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/)
+     * \param smoothing_history_size (unsigned int, optional, default: 10) Max number of raw values used for \f getSmoothedLux or \f getSmoothedFootCandles
      */
     LightDependentResistor(int pin, unsigned long other_resistor, float mult_value, float pow_value, unsigned int adc_resolution_bits = 10, unsigned int smoothing_history_size = 10);
+
+    ~LightDependentResistor();
 
     /*!
      * \brief getCurrentLux Get light intensity (in lux) from the photocell
@@ -138,8 +142,8 @@ class LightDependentResistor
     /*!
      * \brief updatePhotocellParameters Redefine the photocell parameters
      *
-     * \parameter mult_value (float) Multiplication parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
-     * \parameter pow_value (float) Power parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
+     * \param mult_value (float) Multiplication parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
+     * \param pow_value (float) Power parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
      */
     void updatePhotocellParameters(float mult_value, float pow_value);
 
@@ -159,18 +163,16 @@ class LightDependentResistor
     float getSmoothedFootCandles();
 
   private:
-    int _pin;
-    unsigned long _other_resistor;
-    float _mult_value;
-    float _pow_value;
-    bool _photocell_on_ground;
-    unsigned int _adc_resolution_bits;
-    float* _smoothing_history_values;
-    float _smoothing_sum;
-    unsigned int _smoothing_history_size;
-    unsigned int _smoothing_history_next;
-
-    void _init_smoothing(unsigned int smoothing_history_size);
+    int _pin; //!< Analog pin connected to the voltage divider
+    unsigned long _other_resistor; //!< Resistor used for the voltage divider
+    float _mult_value; //!< Multiplication parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
+    float _pow_value; //!< Power parameter in "I[lux]=mult_value/(R[Ω]^pow_value)" expression
+    bool _photocell_on_ground; //!< Photocell is connected to +5V/3.3V (false) or GND (true) ?
+    unsigned int _adc_resolution_bits; //!< Number of resolution bits for the ADC pin
+    float _smoothing_sum; //!< (smoothing only) Current sum of valid values of \v _smoothing_history_values
+    unsigned int _smoothing_history_size; //!< (smoothing only) Size of the table of values
+    unsigned int _smoothing_history_next; //!< (smoothing only) Next value to get/replace
+    float* _smoothing_history_values; //!< (smoothing only) All valid values (as lux) in a table of \v _smoothing_history_size values maximum (oldest value will be replaced by a new one if table is full)
 };
 
 #endif //LightDependentResistor_h
