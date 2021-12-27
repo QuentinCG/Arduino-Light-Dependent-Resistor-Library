@@ -20,7 +20,7 @@ LightDependentResistor::LightDependentResistor(int pin, unsigned long other_resi
   _smoothing_sum(0.0f),
   _smoothing_history_size(smoothing_history_size),
   _smoothing_history_next(0),
-  _smoothing_history_values(new float[smoothing_history_size]),
+  _smoothing_history_values(new float[smoothing_history_size])
 {
   switch (kind)
   {
