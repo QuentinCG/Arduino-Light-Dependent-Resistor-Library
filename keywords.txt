@@ -7,6 +7,8 @@ luxToFootCandles	KEYWORD2
 footCandlesToLux	KEYWORD2
 setPhotocellPositionOnGround	KEYWORD2
 updatePhotocellParameters	KEYWORD2
+getSmoothedLux	KEYWORD2
+getSmoothedFootCandles	KEYWORD2
 GL5516	KEYWORD2
 GL5528	KEYWORD2
 GL5537_1	KEYWORD2
