@@ -9,10 +9,10 @@
  *   3.3V                 GL5528
  *
  * \author Quentin Comte-Gaz <quentin@comte-gaz.com>
- * \date 27 December 2021
+ * \date 30 January 2023
  * \license MIT License (contact me if too restrictive)
- * \copyright Copyright (c) 2021 Quentin Comte-Gaz
- * \version 1.3
+ * \copyright Copyright (c) 2023 Quentin Comte-Gaz
+ * \version 1.4
  */
 
 #include <LightDependentResistor.h>
@@ -44,6 +44,7 @@ void loop()
 
   float intensity_in_lux = photocell.getCurrentLux();
   // prefer "float intensity_in_lux = photocell.getSmoothedLux();" if you want to have a "smoothed" value
+  // You can also do this if you want to get raw sensor value too: "photocell.rawAnalogValueToLux(photocell.getCurrentRawAnalogValue());"
 
   Serial.print("Light intensity: ");
   Serial.print(intensity_in_lux);

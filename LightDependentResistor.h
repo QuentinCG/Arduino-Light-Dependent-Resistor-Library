@@ -19,10 +19,10 @@
  *       but you will have to call \p setPhotocellPositionOnGround(false).
  *
  * \author Quentin Comte-Gaz <quentin@comte-gaz.com>
- * \date 27 December 2021
+ * \date 30 January 2023
  * \license MIT License (contact me if too restrictive)
- * \copyright Copyright (c) 2021 Quentin Comte-Gaz
- * \version 1.3
+ * \copyright Copyright (c) 2023 Quentin Comte-Gaz
+ * \version 1.4
  */
 
 #ifndef LightDependentResistor_h
@@ -101,6 +101,25 @@ class LightDependentResistor
      * \return (float) Light intensity (in footcandles)
      */
     float getCurrentFootCandles() const;
+
+    /*!
+     * \brief getCurrentRawAnalogValue Read light intensity from the photocell, and provide the sensor raw analogic value (not a really readable value)
+     *
+     * \return (int) Light intensity (in sensor raw analogic value), not a really readable value, prefer \f getCurrentLux or \f getCurrentFootCandles
+     */
+    int getCurrentRawAnalogValue() const;
+
+    /*!
+     * \brief rawAnalogValueToLux Convert raw value from photocell sensor into lux
+     *
+     *  This function is only needed if the sensor MUST NOT be handled by this library...
+     *  Else, it is better to directly use \f getCurrentLux that will read sensor value and convert it into lux.
+     *
+     * \param raw_value (int) Analog value of the photocell sensor (WARNING: This value must be with the same adc resolution as the one in the constructor)
+     *
+     * \return (float) Light intensity (in lux)
+     */
+    float rawAnalogValueToLux(int raw_analog_value) const;
 
     /*!
      * \brief luxToFootCandles Get footcandles from lux intensity

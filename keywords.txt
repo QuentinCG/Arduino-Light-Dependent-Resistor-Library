@@ -1,6 +1,8 @@
 LightDependentResistor	KEYWORD1
 getCurrentLux	KEYWORD2
 getCurrentFootCandles	KEYWORD2
+getCurrentRawAnalogValue	KEYWORD2
+rawAnalogValueToLux	KEYWORD2
 luxToFootCandles	KEYWORD2
 footCandlesToLux	KEYWORD2
 setPhotocellPositionOnGround	KEYWORD2

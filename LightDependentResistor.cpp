@@ -2,10 +2,10 @@
  * \brief Get light intensity value (Lux & FootCandles) from Light dependent Resistor (implementation)
  *
  * \author Quentin Comte-Gaz <quentin@comte-gaz.com>
- * \date 27 December 2021
+ * \date 30 January 2023
  * \license MIT License (contact me if too restrictive)
- * \copyright Copyright (c) 2021 Quentin Comte-Gaz
- * \version 1.3
+ * \copyright Copyright (c) 2023 Quentin Comte-Gaz
+ * \version 1.4
  */
 
 #include "LightDependentResistor.h"
@@ -104,22 +104,26 @@ void LightDependentResistor::setPhotocellPositionOnGround(bool on_ground)
   _photocell_on_ground = on_ground;
 }
 
-float LightDependentResistor::getCurrentLux() const
+int LightDependentResistor::getCurrentRawAnalogValue() const
 {
   // Analog resolution setter is not handled on all boards (not compatible boards: MEGA, ESP8266, Uno)
   #if !defined(__AVR_ATmega1280__) && !defined(__AVR_ATmega2560__) && !defined(ESP8266) && !defined(__AVR_ATmega328P__) && !defined(__AVR_ATmega168__)
     analogReadResolution(_adc_resolution_bits);
   #endif
-  int photocell_value = analogRead(_pin);
 
-  if (pow(2, _adc_resolution_bits) == photocell_value)
-  {
-    photocell_value--;
-  }
+  return analogRead(_pin);
+}
 
+float LightDependentResistor::rawAnalogValueToLux(int raw_analog_value) const
+{
   unsigned long photocell_resistor;
 
-  float ratio = ((float)pow(2, _adc_resolution_bits) / (float)photocell_value) - 1;
+  if (pow(2, _adc_resolution_bits) == raw_analog_value)
+  {
+    raw_analog_value--;
+  }
+
+  float ratio = ((float)pow(2, _adc_resolution_bits) / (float)raw_analog_value) - 1;
   if (_photocell_on_ground)
   {
     photocell_resistor = _other_resistor / ratio;
@@ -130,6 +134,11 @@ float LightDependentResistor::getCurrentLux() const
   }
 
   return _mult_value / (float)pow(photocell_resistor, _pow_value);
+}
+
+float LightDependentResistor::getCurrentLux() const
+{
+  return rawAnalogValueToLux(getCurrentRawAnalogValue());
 }
 
 float LightDependentResistor::getCurrentFootCandles() const
